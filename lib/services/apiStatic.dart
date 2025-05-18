@@ -31,10 +31,6 @@ class ApiStatic{
   try {
     final response = await http.put(
       Uri.parse("https://dev.wefgis.com/api/petani/${petani.idPenjual}"),
-      // headers: {
-      //   'Authorization': 'Bearer $_token',
-      //   'Content-Type': 'application/json',
-      // },
       body: jsonEncode(petani.toJson()),
     );
 
@@ -55,9 +51,6 @@ class ApiStatic{
   try {
     final response = await http.delete(
       Uri.parse("https://dev.wefgis.com/api/petani/$idPenjual"),
-      // headers: {
-      //   'Authorization': 'Bearer $_token',
-      // },
     );
 
     if (response.statusCode == 200 || response.statusCode == 204) {

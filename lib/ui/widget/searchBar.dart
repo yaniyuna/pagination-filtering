@@ -34,7 +34,7 @@ class _SearchbarState extends State<Searchbar> {
       return matchesSearch && matchesFilter;
     }).toList();
 
-    widget.onResultsChanged(results); // Kirim hasil ke parent widget
+    widget.onResultsChanged(results); // buat kirim hasil ke parent widget
     if (widget.onSearchChanged != null) {
       widget.onSearchChanged!(_searchQuery, _filters);
     }

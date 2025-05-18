@@ -5,7 +5,6 @@ class PetaniListItem extends StatelessWidget {
   final Petani petani;
   final VoidCallback? onTap;
 
-  // Tambahan callback untuk edit dan delete
   final VoidCallback? onEdit;
   final VoidCallback? onDelete;
 
@@ -64,7 +63,6 @@ class PetaniListItem extends StatelessWidget {
                 ),
               ),
 
-              // Tombol edit & delete vertikal di kanan
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

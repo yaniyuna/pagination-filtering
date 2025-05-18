@@ -102,7 +102,7 @@ class _PetaniFormPageState extends State<PetaniFormPage> {
         const SnackBar(content: Text('Data berhasil dikirim')),
       );
 
-      Navigator.pop(context, true); // Kembali dengan sinyal untuk refresh
+      Navigator.pop(context, true); 
     }
   }
 

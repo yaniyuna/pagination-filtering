@@ -1,63 +1,65 @@
 class Petani{
-  Petani({
-        required this.idPenjual,
-        required this.nama,
-        required this.nik,
-        required this.alamat,
-        required this.telp,
-        required this.foto,
-        required this.idKelompokTani,
-        required this.status,
-        required this.namaKelompok,
-        required this.createdAt,
-        required this.updatedAt,
-    });
-    final dynamic idPenjual;
-    final String nama;
-    final String nik;
-    final String alamat;
-    final String telp;
-    final String foto;
-    final String idKelompokTani;
-    final String status;
-    final String namaKelompok;
-    final String createdAt;
-    final String updatedAt;
-    
-    factory Petani.fromJson(Map<String, dynamic> json) => Petani(
-        idPenjual: json["id_penjual"].toString(),
-        nama: (json["nama"]==null || json["nama"]=='')?'':json["nama"].toString(),
-        nik: (json["nik"]==null || json["nik"]=='')?'':json["nik"].toString(),
-        alamat: json["alamat"].toString(),
-        telp: json["telp"].toString(),
-        foto: json["foto"].toString(),
-        idKelompokTani: json["id_kelompok_tani"].toString(),
-        status: json["status"].toString(),
-        namaKelompok: json["nama_kelompok"].toString(),
-        createdAt: json["created_at"].toString(),
-        updatedAt: json["updated_at"].toString(),
-    );
 
-    Map<String, dynamic> toJson() => {
-        "id_penjual": idPenjual,
-        "nama": nama,
-        "nik": nik,
-        "alamat": alamat,
-        "telp": telp,
-        "foto": foto,
-        "id_kelompok_tani": idKelompokTani,
-        "status": status,
-        "nama_kelompok": namaKelompok,
-        "created_at": createdAt,
-        "updated_at": updatedAt,
-      };
+  final dynamic idPenjual;
+  final String nama;
+  final String nik;
+  final String alamat;
+  final String telp;
+  final String foto;
+  final String idKelompokTani;
+  final String status;
+  final String namaKelompok;
+  final String createdAt;
+  final String updatedAt;
+
+  Petani({
+    required this.idPenjual,
+    required this.nama,
+    required this.nik,
+    required this.alamat,
+    required this.telp,
+    required this.foto,
+    required this.idKelompokTani,
+    required this.status,
+    required this.namaKelompok,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+    
+  factory Petani.fromJson(Map<String, dynamic> json) => Petani(
+    idPenjual: json["id_penjual"].toString(),
+    nama: (json["nama"]==null || json["nama"]=='')?'':json["nama"].toString(),
+    nik: (json["nik"]==null || json["nik"]=='')?'':json["nik"].toString(),
+    alamat: json["alamat"].toString(),
+    telp: json["telp"].toString(),
+    foto: json["foto"].toString(),
+    idKelompokTani: json["id_kelompok_tani"].toString(),
+    status: json["status"].toString(),
+    namaKelompok: json["nama_kelompok"].toString(),
+    createdAt: json["created_at"].toString(),
+    updatedAt: json["updated_at"].toString(),
+  );
+
+  Map<String, dynamic> toJson() => {  
+    "id_penjual": idPenjual,
+    "nama": nama,
+    "nik": nik,
+    "alamat": alamat,
+    "telp": telp,
+    "foto": foto,
+    "id_kelompok_tani": idKelompokTani,
+    "status": status,
+    "nama_kelompok": namaKelompok,
+    "created_at": createdAt,
+    "updated_at": updatedAt,
+  };
   bool matchesSearchQuery(String query) {
     final searchTerm = query.toLowerCase();
     return nama.toLowerCase().contains(searchTerm) ||
-        nik.toLowerCase().contains(searchTerm) ||
-        alamat.toLowerCase().contains(searchTerm) ||
-        namaKelompok.toLowerCase().contains(searchTerm) ||
-        telp.toLowerCase().contains(searchTerm);
+      nik.toLowerCase().contains(searchTerm) ||
+      alamat.toLowerCase().contains(searchTerm) ||
+      namaKelompok.toLowerCase().contains(searchTerm) ||
+      telp.toLowerCase().contains(searchTerm);
   }
   bool matchesFilterCriteria(Map<String, dynamic> filters) {
     for (final entry in filters.entries) {
@@ -77,7 +79,6 @@ class Petani{
         case 'telp':
           if (!telp.toLowerCase().contains(value)) return false;
           break;
-        // Tambahkan filter lainnya sesuai kebutuhan
       }
     }
     return true;
