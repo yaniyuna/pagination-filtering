@@ -1,6 +1,6 @@
 class Petani{
 
-  final dynamic idPenjual;
+  final String idPenjual;
   final String nama;
   final String nik;
   final String alamat;

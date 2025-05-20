@@ -17,7 +17,7 @@ class PetaniPage extends StatefulWidget {
 class _PetaniPageState extends State<PetaniPage> {
 
   static const _pageSize = 10;
-
+  bool isLastPage=false;
   // final PagingController<int, Petani> _pagingController=PagingController(firstPageKey: 0);
   // late TextEditingController _s;
   // final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -26,9 +26,16 @@ class _PetaniPageState extends State<PetaniPage> {
   late final _pagingController = PagingController<int, Petani>(
     getNextPageKey: (state) => (state.keys?.last ?? 0) + 1,
     // fetchPage: (pageKey) => ApiStatic.getPetaniFilter(pageKey, '', 'Y'),
-    fetchPage: (pageKey) =>
-      ApiStatic.getPetaniFilter(pageKey, _searchQuery, _filters['status'] ?? 'Y'),
-  
+    fetchPage:(pageKey) async {
+      List<Petani> newitems=[];
+      if (isLastPage==false) {
+        newitems= await ApiStatic.getPetaniFilter(pageKey, _searchQuery, _filters['status'] ?? 'Y');
+      } 
+      if (newitems.length<_pageSize) {
+        isLastPage=true;
+      } 
+      return newitems;
+    },
   );
 
   String _searchQuery = '';
